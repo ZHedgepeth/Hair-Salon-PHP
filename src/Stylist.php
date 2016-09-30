@@ -3,12 +3,12 @@
     class Stylist
     {
         private $name;
-        private $id;
+        private $stylist_id;
 
-        function __construct($name, $id=null)
+        function __construct($stylist_name, $stylist_id=null)
         {
-            $this->name = $name;
-            $this->id = $id;
+            $this->name = $stylist_name;
+            $this->stylist_id = $stylist_id;
         }
 
         function getName()
@@ -16,20 +16,19 @@
             return $this->name;
         }
 
-        function setName($new_name)
+        function setName($new_stylist_name)
         {
-            $this->name = (string) $new_name;
+            $this->name = (string) $new_stylist_name;
         }
 
         function getId()
         {
-            return $this->id;
+            return $this->stylist_id;
         }
 
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO stylists (name) VALUES ('{$this->getName()}');");
-
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -71,6 +70,8 @@
             }
             return $found_stylist;
         }
+
+
     }
 
 
