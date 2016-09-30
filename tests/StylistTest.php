@@ -4,7 +4,7 @@
     * @backupGlobals disabled
     * @backupStaticAttributes disabled
     */
-
+    require_once "src/Client.php";
     require_once "src/Stylist.php";
 
     $server = 'mysql:host=localhost:8889;dbname=hair_salon_test';
@@ -34,7 +34,7 @@
             $this->assertEquals($id, $result);
         }
 
-        function testgetName()
+        function testGetName()
         {
             //ARRANGE
             $name = "Jilly Jiles";
@@ -93,7 +93,7 @@
             $this->assertEquals([$test_stylist, $test_stylist2], $result);
         }
 
-        function test_deleteAll()
+        function testDeleteAll()
         {
             //Arrange
             $name = "Jilly Jiles";
@@ -128,6 +128,47 @@
             //Assert
             $this->assertEquals($test_stylist, $result);
         }
+
+        function testGetClients()
+        {
+            //Arrange
+            $name = "Jilly Jiles";
+            $test_stylist = new Stylist($name, $id);
+            $test_stylist->save();
+            $test_stylist_id = $test_stylist->getId();
+            print($test_stylist_id);
+
+            $client = "Fantasia";
+            $test_client = new Client($client, $test_stylist_id);
+            $test_client->save();
+
+            $client2 = "Clarice";
+            $test_client2 = new Client($client2, $test_stylist_id);
+            $test_client2->save();
+
+            //Act
+            $result = $test_stylist->getClients();
+
+            //Assert
+            $this->assertEquals([$test_client, $test_client2], $result);
+        }
+
+        function testUpdate()
+        {
+            //ARRANGE
+            $name = "Jilly Jiles";
+            $id = null;
+            $test_stylist = new Stylist($name, $id);
+            $test_stylist->save();
+            $new_name = "George Withersby";
+
+            //ACT
+            $test_stylist->update($new_name);
+            //ASSERT
+            $this->assertEquals("George Withersby", $test_stylist->getName());
+        }
+
+
 
 
     }

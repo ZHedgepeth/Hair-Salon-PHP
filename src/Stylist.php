@@ -5,10 +5,10 @@
         private $name;
         private $stylist_id;
 
-        function __construct($stylist_name, $stylist_id=null)
+        function __construct($stylist_name, $s_id = null)
         {
             $this->name = $stylist_name;
-            $this->stylist_id = $stylist_id;
+            $this->stylist_id = $s_id;
         }
 
         function getName()
@@ -74,12 +74,13 @@
             foreach($returned_clients as $client)
             {
                 $client_name = $client['name'];
-                $id = $client['id'];
+                // $id = $client['id'];
                 $stylist_id = $client['stylist_id'];
-                $new_client = new Client($client_name, $stylist_id, $id);
+                $new_client = new Client($client_name, $stylist_id);
                 array_push($clients, $new_client);
             }
             return $clients;
+
         }
 
         function update($new_name)
