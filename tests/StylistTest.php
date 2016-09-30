@@ -16,7 +16,7 @@
     {
         // protected function tearDown()
         // {
-        //     Client::deleteAll();
+        //     // Client::deleteAll();
         //     Stylist::deleteAll();
         // }
 
@@ -32,6 +32,24 @@
 
             //ASSERT
             $this->assertEquals($id, $result);
-
         }
-}
+
+        function testGetName()
+        {
+            //ARRANGE
+            $name = "Jilly Jiles";
+            $test_stylist = new Stylist($name);
+            $new_name = "James Joyce";
+
+            //ACT
+            $test_stylist->setName($new_name);
+            $result = $test_stylist->getName();
+
+            //ASSERT
+            $this->assertEquals($new_name, $result);
+        }
+
+
+
+
+    }
