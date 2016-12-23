@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <title>Main Page</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Hair Salon</h1>
+        </div><hr>
+        <div class="row">
+            <div class="col-md-4">
+                <p>Create a New Stylist-</p><hr>
+                <div class="form-group">
+                    <form action="/create_stylist" method="post" class="form-inline">
+                        <label for="new_stylist">New Stylist Name</label>
+                        <input id="new_stylist" name="new_stylist" type="text" class="form-control" required><br><br>
+                        <button type="submit" class="btn btn-success">Add Stylist</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4">
+                {% if stylists is not empty %}
+                    <p>All Existing Stylists:</p>
+                    {% for stylist in stylists %}
+                        <li><a href="/stylists/{{stylist.getId}}">{{stylist.getStylistName}}</a></li>
+                    {% endfor %}
+                    <br><form action="/delete_stylists" method="post">
+                        <button type="submit" class="btn btn-danger">Delete All</button>
+                    </form>
+                {% else %}
+                    <p>There are no Stylists yet!</p>
+                {% endif %}<br>
+            </div>
+            <div class="col-md-4">
+                {% if clients is not empty %}
+                    <p>All Existing Clients:</p>
+                    {% for client in clients %}
+                        <li>{{client.getClientName}}</li>
+                    {% endfor %}
+                    <br><form action="/client_delete_all" method="post">
+                        <button type="submit" class="btn btn-danger">Delete All</button>
+                    </form>
+                {% else %}
+                    <p>There are no Clients yet!</p>
+                {% endif %}<br>
+            </div>
+        </div>
+    </body>
+</html>

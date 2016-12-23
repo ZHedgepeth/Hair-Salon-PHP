@@ -5,10 +5,10 @@
         private $name;
         private $stylist_id;
 
-        function __construct($stylist_name, $s_id = null)
+        function __construct($stylist_name, $stylist_id = null)
         {
             $this->name = $stylist_name;
-            $this->stylist_id = $s_id;
+            $this->stylist_id = $stylist_id;
         }
 
         function getName()
