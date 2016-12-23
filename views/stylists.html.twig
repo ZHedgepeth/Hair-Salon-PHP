@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <title>Stylists</title>
+    </head>
+    <body>
+        <h1>Hair Salon</h1>
+        <div class="container">
+            <h1>Clients of: {{stylist.getStylistName}}</h1>
+            {% if matchingClients is not empty %}
+                {% for client in matchingClients %}
+                    <form action="/client_edit/{{client.getId}}/{{stylist.getId}}">
+                        <li>{{client.getClientName}}:
+                        <button type="submit">edit/delete</button></li><br>
+                    </form> 
+                {% endfor %}
+            {% endif %}
+            <h2>Add a Client</h2>
+            <form action="/client_add/{{stylist.getId}}" method="post">
+                <label for="new_client_name">New Client Name</label>
+                <input id="new_client_name" name="new_client_name" type="text" required class="form-control"><br>
+                <button class="btn btn-success" type="submit">Add Client</button><br>
+            </form><hr>
+            <form action="/delete_stylist/{{stylist.getId}}" method="post">
+                <input name="_method" type="hidden" value="delete">
+                <button type="submit" class="btn btn-danger">Delete {{stylist.getStylistName}}'s Account</button>
+            </form><br>
+            <p><a href="/">Home</a></p>
+        </div>
+    </body>
+</html>

@@ -22,7 +22,7 @@
             </div>
             <div class="col-md-4">
                 {% if stylists is not empty %}
-                    <p>All Existing Stylists:</p>
+                    <p>All Existing Stylists-</p>
                     {% for stylist in stylists %}
                         <li><a href="/stylists/{{stylist.getId}}">{{stylist.getStylistName}}</a></li>
                     {% endfor %}
@@ -30,12 +30,12 @@
                         <button type="submit" class="btn btn-danger">Delete All</button>
                     </form>
                 {% else %}
-                    <p>There are no Stylists yet!</p>
+                    <p>No Stylists at the moment</p>
                 {% endif %}<br>
             </div>
             <div class="col-md-4">
                 {% if clients is not empty %}
-                    <p>All Existing Clients:</p>
+                    <p>Clients in Database-</p>
                     {% for client in clients %}
                         <li>{{client.getClientName}}</li>
                     {% endfor %}
@@ -43,7 +43,7 @@
                         <button type="submit" class="btn btn-danger">Delete All</button>
                     </form>
                 {% else %}
-                    <p>There are no Clients yet!</p>
+                    <p>No clients at the moment</p>
                 {% endif %}<br>
             </div>
         </div>
