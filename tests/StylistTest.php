@@ -16,7 +16,7 @@
     {
         protected function tearDown()
         {
-            // Client::deleteAll();
+            Client::deleteAll();
             Stylist::deleteAll();
         }
 
@@ -132,18 +132,18 @@
         function testGetClients()
         {
             //Arrange
+            $id = null;
             $name = "Jilly Jiles";
             $test_stylist = new Stylist($name, $id);
             $test_stylist->save();
-            $test_stylist_id = $test_stylist->getId();
-            print($test_stylist_id);
 
+            $id = null;
             $client = "Fantasia";
-            $test_client = new Client($client, $test_stylist_id);
+            $test_client = new Client($client, $stylist_id, $id);
             $test_client->save();
 
             $client2 = "Clarice";
-            $test_client2 = new Client($client2, $test_stylist_id);
+            $test_client2 = new Client($client2, $stylist_id, $id);
             $test_client2->save();
 
             //Act

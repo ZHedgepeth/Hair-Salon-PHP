@@ -30,7 +30,7 @@
     $app->get("/stylists/{id}", function($stylist_id) use ($app) {
         $stylist = Stylist::find($stylist_id);
         $match_clients = $stylist->getClients();
-        return $app['twig']->render('stylists.html.twig', array('stylist' => $stylist, 'matchingClients' => $match_clients));
+        return $app['twig']->render('stylists.html.twig', array('stylists' => $stylist, 'matchingClients' => $match_clients));
     });
     $app->post("/delete_stylists", function() use ($app) {
         Stylist::deleteAll();
