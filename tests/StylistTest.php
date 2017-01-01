@@ -156,19 +156,17 @@
         function testUpdate()
         {
             //ARRANGE
-            $name = "Jilly Jiles";
             $id = null;
+            $name = "Jilly Jiles";
             $test_stylist = new Stylist($name, $id);
             $test_stylist->save();
             $new_name = "George Withersby";
 
             //ACT
             $test_stylist->update($new_name);
+
             //ASSERT
             $this->assertEquals("George Withersby", $test_stylist->getName());
         }
-
-
-
 
     }
