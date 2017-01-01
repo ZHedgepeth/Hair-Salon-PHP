@@ -11,12 +11,12 @@
             $this->id = $id;
         }
 
-        function getName()
+        function getStylistName()
         {
             return $this->stylist_name;
         }
 
-        function setName($new_stylist_name)
+        function setStylistName($new_stylist_name)
         {
             $this->stylist_name = (string) $new_stylist_name;
         }
@@ -28,7 +28,7 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO stylists (stylist_name) VALUES ('{$this->getName()}');");
+            $GLOBALS['DB']->exec("INSERT INTO stylists (stylist_name) VALUES ('{$this->getStylistName()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -85,7 +85,7 @@
         function update($new_stylist_name)
         {
             $GLOBALS['DB']->exec("UPDATE stylists SET stylist_name = '{$new_stylist_name}' WHERE id = {$this->getId()};");
-            $this->setName($new_stylist_name);
+            $this->setStylistName($new_stylist_name);
         }
 
         function delete()

@@ -23,7 +23,7 @@
             <div class="col-md-5">
                 <p>All Clients</p>
                 {% for client in clients %}
-                  <li>{{ client.getName }}</li>
+                  <li>{{ client.getClientName }}</li>
                 {% endfor %}
 
                 <form action="/delete_clients" method="post">

@@ -30,8 +30,9 @@
     $app->get("/stylists/{id}", function($id) use ($app) {
         $stylist = Stylist::find($id);
         $match_clients = $stylist->getClients();
-        return $app['twig']->render('stylists.html.twig', array('stylists' => $stylist, 'matchingClients' => $match_clients));
+        return $app['twig']->render('stylists.html.twig', array('stylist' => $stylist, 'matchingClients' => $match_clients));
     });
+
     $app->post("/delete_stylists", function() use ($app) {
         Stylist::deleteAll();
         return $app["twig"]->render("index.html.twig", array('stylists' => Stylist::getAll(), 'clients' => Client::getAll()));
@@ -49,6 +50,20 @@
         $stylist = Stylist::find($id);
         $match_clients = $stylist->getClients();
         return $app['twig']->render("stylists.html.twig", array('stylist' => $stylist, 'matchingClients' => $match_clients));
+    });
+
+    $app->get("/client_edit/{id}/{stylist_id}", function($id, $stylist_id) use ($app) {
+        $client = Client::find($id);
+        $stylist = Stylist::find($stylist_id);
+        return $app["twig"]->render("editclient.html.twig", array('client' => $client, 'stylist' => $stylist));
+    });
+
+    $app->patch("/client_update/{id}/{stylist_id}", function($id, $stylist_id) use ($app) {
+        $client = Client::find($id);
+        $client->update($_POST['new_client_name']);
+        $stylist = Stylist::find($stylist_id);
+        $match_clients = $stylist->getClients();
+        return $app["twig"]->render("stylists.html.twig", array('stylist' => $stylist, 'matchingClients' => $match_clients));
     });
 
     $app->delete("/delete_client/{id}/{stylist_id}", function($id, $stylist_id) use ($app) {

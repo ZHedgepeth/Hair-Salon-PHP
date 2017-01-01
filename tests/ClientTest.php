@@ -123,7 +123,7 @@
             //ACT
             $test_client->update($new_name);
             //ASSERT
-            $this->assertEquals("Mrs Veronica Jones", $test_client->getName());
+            $this->assertEquals("Mrs Veronica Jones", $test_client->getClientName());
         }
 
         function testDelete()

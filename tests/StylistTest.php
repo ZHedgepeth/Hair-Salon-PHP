@@ -34,20 +34,20 @@
             $this->assertEquals($id, $result);
         }
 
-        function testGetName()
+        function testGetStylistName()
         {
             //ARRANGE
             $name = "Jilly Jiles";
             $test_stylist = new Stylist($name);
 
             //ACT
-            $result = $test_stylist->getName();
+            $result = $test_stylist->getStylistName();
 
             //ASSERT
             $this->assertEquals($name, $result);
         }
 
-        function testSetName()
+        function testSetStylistName()
         {
             //ARRANGE
             $name = "Jilly Jiles";
@@ -55,8 +55,8 @@
             $new_name = "James Joyce";
 
             //ACT
-            $test_stylist->setName($new_name);
-            $result = $test_stylist->getName();
+            $test_stylist->setStylistName($new_name);
+            $result = $test_stylist->getStylistName();
 
             //ASSERT
             $this->assertEquals($new_name, $result);
@@ -166,7 +166,7 @@
             $test_stylist->update($new_name);
 
             //ASSERT
-            $this->assertEquals("George Withersby", $test_stylist->getName());
+            $this->assertEquals("George Withersby", $test_stylist->getStylistName());
         }
 
     }
