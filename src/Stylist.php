@@ -72,10 +72,10 @@
 
             foreach($returned_clients as $returned_client)
             {
-                $client_name = $returned_client['client_name'];
-                $id = $returned_client['id'];
+                $name = $returned_client['client_name'];
                 $stylist_id = $returned_client['stylist_id'];
-                $new_client = new Client($client_name, $stylist_id, $id);
+                $id = $returned_client['id'];
+                $new_client = new Client($name, $stylist_id, $id);
                 array_push($clients, $new_client);
             }
             return $clients;

@@ -138,11 +138,11 @@
             $test_stylist->save();
 
             $id = null;
-            $client = "Fantasia";
-            $test_client = new Client($client, $stylist_id, $id);
-            $test_client->save();
-
+            $client1 = "Fantasia";
             $client2 = "Clarice";
+            $stylist_id = $test_stylist->getId();
+            $test_client1 = new Client($client1, $stylist_id, $id);
+            $test_client1->save();
             $test_client2 = new Client($client2, $stylist_id, $id);
             $test_client2->save();
 
@@ -150,7 +150,7 @@
             $result = $test_stylist->getClients();
 
             //Assert
-            $this->assertEquals([$test_client, $test_client2], $result);
+            $this->assertEquals([$test_client1, $test_client2], $result);
         }
 
         function testUpdate()
